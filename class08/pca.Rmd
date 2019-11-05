@@ -1,0 +1,35 @@
+---
+title: "PCA"
+author: "Patrick Paxson"
+date: "10/24/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+x <- read.csv("UK_foods.csv", row.names=1)
+head(x)
+
+pca <- prcomp( t(x) )
+summary(pca)
+
+plot(pca$x[,1], pca$x[,2], xlab="PC1", ylab="PC2", xlim=c(-270,500))
+text(pca$x[,1], pca$x[,2], colnames(x), col=c("gold", "red", "blue", "green"))
+
+v <- round( pca$sdev^2/sum(pca$sdev^2) * 100 )
+barplot(v, xlab="Principal Component", ylab="Percent Variation")
+
+par(mar=c(10, 3, 0.35, 0))
+barplot( pca$rotation[,1], las=2 )
+barplot( pca$rotation[,2], las=2 )
+
+biplot(pca)
+```
+
+```{r}
+rna.data <- read.csv("expression.csv", row.names=1)
+head(rna.data)
+```

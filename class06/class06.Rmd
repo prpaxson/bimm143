@@ -1,0 +1,81 @@
+---
+title: "Class 6 R Functions"
+author: "Patrick Paxson"
+date: "10/17/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# This is H1
+This is my work from class 6 in **BIMM 143**.
+
+``` {r}
+plot(1:10)
+```
+
+## Practice reading files (again)
+
+Here I practice reading 3 diffeerent files...
+
+```{r}
+read.table("test1.txt", sep=",",header=TRUE)
+```
+
+```{r}
+read.table("https://bioboot.github.io/bimm143_F19/class-material/test2.txt", sep="$", header=TRUE)
+```
+
+```{r}
+add <- function(x, y=1)
+{
+  # Sum the input x and y
+  x+y
+}
+
+add(x=1, y=4)
+add(1, 4)
+add(1)
+
+add(c(1,2,3))
+add(c(1,2,3),4)
+
+#add(1,2,2)
+#add(x=1, y="b")
+```
+
+```{r}
+rescale <- function(x)
+{
+  rng <- range(x)
+  (x-rng[1])/(rng[2]-rng[1])
+}
+
+rescale(1:10)
+
+rescaleNA <- function(x,na.rm=TRUE)
+{
+  rng <- range(x, na.rm=na.rm)
+  (x-rng[1])/(rng[2]-rng[1])
+}
+
+x <- c(1,2,NA,3,10)
+rescale(x)
+rescaleNA(x)
+
+rescalePlot <- function(x, na.rm=TRUE, plot=FALSE)
+{
+  rng <- range(x, na.rm=na.rm)
+  print("Hello")
+  
+  answer <- (x-rng[1])/(rng[2]-rng[1])
+  
+  return (answer)
+  if(plot)
+  {
+    plot(answer, typ="b",lwd=4)
+  }
+}
+```

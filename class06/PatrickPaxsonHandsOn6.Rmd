@@ -1,0 +1,30 @@
+---
+title: "PatrickPaxsonHandsOn6"
+author: "Patrick Paxson"
+date: "10/17/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Protein Drug Interactions
+This function takes in the protein name as a string, then reads in said protein from the protein database. It performs the chainA and b atom analysis, then plots it if the plot flag is set to true (which is its default state.)
+```{r}
+library(bio3d)
+analyze_protein <- function(protein_name, plot=TRUE)
+{
+  p <- read.pdb(protein_name)
+  p.chainA <- trim.pdb(p, chain="A", elety="CA")
+  p.b <- p.chainA$atom$b
+  if (plot)
+  {
+    plotb3(p.b, sse=p.chainA, typ="l", ylab="Bfactor")
+  }
+}
+```
+Calling the function is simple; just pass in the protein.
+```{r}
+analyze_protein("3RGK")
+```

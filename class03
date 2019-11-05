@@ -1,0 +1,35 @@
+Lab 3
+10/8/19
+
+Section 1
+Q1: I found that most of the coverage was ~99%, with a very low E value
+
+Q2: There are more results with lower alignment statistics when increasing the Expect Threshold
+
+Section 2
+Q3: Yes
+
+Q4: Found a few new strains of myoglobin, which is expressed in skeletal and cardiac muscles
+
+Q5: It found a new kind of hemoglobin, and still found myoglobin and neuroglobin. In order to find even more distant results, one could dincrease the expect thresholdd.
+
+Q6: Pos 144-146 - MVL
+Pos 220-232 - SPAKTNVKAAWG
+Pos 272-278 - KVGAHAG
+Pos 285-293 - EYGAEALE
+Pos 297-312 - RMFLSFPTTKTYFPHF
+Pos 358-377 - DDLSHGSAQVKGHGKKVADAL
+Pos 381-391 - TNAVAHVDDMP
+Pos 534-546 - NALSALSDHAHK
+Pos 784-809 - LRVDPVNFKLLSHCLLVTLAAHLPAE
+Pos 837-842 - FTPAVH
+Pos 845-851 - ASLDKFL
+Pos 857-868 - ASVSTVLTSKYR
+
+Q7: Much fewer results, only 25 vs ~250 from NCBI
+
+Q8: Yes; 3RGK, 1OJ6, 4MPM
+
+Q9: Very fast, much faster than NCBI. Was responsive
+
+Q10: Holding the structure of the protein together

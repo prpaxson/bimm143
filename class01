@@ -1,0 +1,56 @@
+Lab 1
+Bioinformatics Databases and Key Online Resources 
+10/1/19
+
+Section 1
+Q1) Nucleotide BLAST
+
+Q2) Homo sapiens hemoglobin subunit beta (HBB), mRNA; NM_000518.5
+PREDICTED: Pan troglodytes hemoglobin subunit beta (HBB), mRNA; XM_508242.4 
+PREDICTED: Pan paniscus hemoglobin subunit beta (LOC100976465), mRNA; XM_003819029.2
+Homo sapiens hemoglobin beta chain variant Hb S-Wake (HBB) mRNA; AY136510.1  
+
+Q3) 99.57%, 99.36%, 99.36%, 99.36%
+
+Q4) 466 of 468 vs 465 of 468
+
+Q5) Official Symbol: HBB
+Official Full Name: hemoglobin subunit beta
+
+Q6) Chromosome 11
+
+Q7) 
+
+Q8) Exon count: 3
+Intron count: 
+
+Q9) The alpha (HBA) and beta (HBB) loci determine the structure of the 2 types of polypeptide chains in adult hemoglobin, Hb A. The normal adult hemoglobin tetramer consists of two alpha chains and two beta chains. Mutant beta globin causes sickle cell anemia. Absence of beta chain causes beta-zero-thalassemia. Reduced amounts of detectable beta globin causes beta-plus-thalassemia. The order of the genes in the beta-globin cluster is 5'-epsilon -- gamma-G -- gamma-A -- delta -- beta--3'. [provided by RefSeq, Jul 2008
+
+Q10) alpha Thalassemia
+beta Thalassemia
+Beta-thalassemia, dominant inclusion body type
+Erythrocytosis 6, familial
+Fetal hemoglobin quantitative trait locus 1f
+Hb SS disease
+Heinz body anemia
+METHEMOGLOBINEMIA, BETA TYPE
+Susceptibility to malaria
+
+Section 2
+Q11) NM_000518.5
+
+Q12) 1 to 142
+
+Q13) 51 to 494
+
+Section 3
+Q14) 50. I could guess because the CSD starts at position 51.
+
+Q15) Position 70 and Position 212
+
+Q16) Codon 7, Glutamic acid to valine
+
+Section 4
+Q17) Yes, sequence QBH68124.1
+
+Q18) The Val6 resude does not connect the two proteins in 2HBS, in contrast to 1HBS. 

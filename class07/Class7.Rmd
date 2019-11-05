@@ -1,0 +1,42 @@
+---
+title: "Class7"
+author: "Patrick Paxson"
+date: "10/22/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R functions revisited
+
+Source my functions from last day
+
+```{r}
+source("http://tinyurl.com/rescale-R")
+```
+
+
+```{r}
+grade <- function(scores, print_dropped = TRUE) {
+  if (any(is.na(scores)))
+  {
+    warning("Student is missing a homework assignment")
+  }
+  scores[is.na(scores)] = 0
+  print(paste("Score dropped: ", scores[which.min(scores)]))
+  return(mean(scores[-which.min(scores)]))
+}
+
+
+student1 <- c(100, 100, 100, 100, 100, 100, 100, 90)
+student2 <- c(100, NA, 90, 90, 90, 90, 97, 80)
+
+print(grade(student1))
+print(grade(student2))
+
+url <- "https://tinyurl.com/gradeinput"
+df <- read.csv(url, row.names=1)
+apply(df, 1, grade)
+```
