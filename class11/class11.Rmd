@@ -1,0 +1,36 @@
+---
+title: "Class 11: Structural Bioinformatics 1"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## The PDB database for biomolecular structure data
+
+> Q1:  Determine the percentage of structures solved by X-Ray and Electron Microscopy.  
+
+Download a CSV file from the PDB site (accessible from “Analyze” -> “PDB Statistics” > “by Experimental Method and Molecular Type”
+
+```{r}
+data = read.csv("Data Export Summary.csv", header=TRUE)
+```
+Total Number of Entries:
+```{r}
+sum(data$Total)
+```
+Proportion of entries from each method:
+```{r}
+round((data$Total/sum(data$Total)) * 100, 2)
+```
+
+> Also, can you determine what proportion of structures are protein?
+
+```{r}
+round(sum(data$Proteins)/sum(data$Total) * 100, 2)
+```
+
+## HIV-1 Protease Analysis
+
+> Q2:  Type HIV in the PDB website search box on the home page and determine how many HIV-1 protease structures are in the current PDB?
