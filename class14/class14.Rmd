@@ -1,0 +1,115 @@
+---
+title: "Untitled"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Input the dataset
+
+Input countData and colData (metadata)
+
+```{r}
+counts <- read.csv("airway_scaledcounts.csv", stringsAsFactors = FALSE)
+metadata <- read.csv("airway_metadata.csv", stringsAsFactors = FALSE)
+```
+
+Now, let's have a look:
+```{r}
+head(counts)
+```
+
+```{r}
+head(metadata)
+```
+
+How many genes do we have in this dataset?
+```{r}
+nrow(counts)
+```
+
+```{r}
+nrow(metadata)
+```
+
+We want to know if there's a difference in expression values for control (non-drug) vs treated (i.e. drug added cell lines).
+
+First step is to find which experiemnts were the control experiments and then get the average values across all control experiments. Then we will do the same for the drug treated experiments.
+
+```{r}
+control <- metadata[metadata[,"dex"]=="control",]
+control.mean <- rowSums( counts[ ,control$id] )/4 
+names(control.mean) <- counts$ensgene
+```
+
+```{r}
+treated <- metadata[metadata[,"dex"]=="treated",]
+treated.mean <- rowSums( counts[ ,treated$id] )/4 
+names(treated.mean) <- counts$ensgene
+```
+
+```{r}
+meancounts <- data.frame(control.mean, treated.mean)
+```
+Log-scaled graph
+```{r}
+plot(meancounts$control.mean, meancounts$treated.mean, log="xy")
+```
+
+```{r}
+meancounts$log2fc <- log2(meancounts[,"treated.mean"]/meancounts[,"control.mean"])
+head(meancounts)
+```
+
+Removing zero values
+
+```{r}
+zero.vals <- which(meancounts[,1:2]==0, arr.ind=TRUE)
+
+to.rm <- unique(zero.vals[,1])
+mycounts <- meancounts[-to.rm,]
+head(mycounts)
+```
+
+```{r}
+up.ind <- mycounts$log2fc > 2
+down.ind <- mycounts$log2fc < (-2)
+```
+
+```{r}
+sum(up.ind)
+```
+
+## Using DESeq2
+
+```{r}
+library(DESeq2)
+citation("DESeq2")
+```
+
+```{r}
+dds <- DESeqDataSetFromMatrix(countData=counts, 
+                              colData=metadata, 
+                              design=~dex, 
+                              tidy=TRUE)
+dds
+```
+
+```{r}
+res01 <- results(DESeq(dds))
+```
+
+```{r}
+mycols <-rep("gray", nrow(res01))
+mycols[ abs(res01$log2FoldChange) > 2 ]  <- "red"
+inds <- (res01$padj < 0.01) & (abs(res01$log2FoldChange) > 2 )
+mycols[ inds ] <- "blue"
+
+#Volcano plot  with custom colors 
+plot( res01$log2FoldChange,  -log(res01$padj), col=mycols, ylab="-Log(P-value)", xlab="Log2(FoldChange)" )
+
+abline(v=c(-2,2), col="gray", lty=2)
+abline(h=-log(0.1), col="gray", lty=2)
+```

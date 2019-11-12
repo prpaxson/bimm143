@@ -28,3 +28,8 @@ write.pdb(protein, file="1hsg_protein.pdb")
 ligand <- atom.select(pdb, "ligand", value=TRUE)
 write.pdb(ligand, file="1hsg_ligand.pdb")
 ```
+
+```{r}
+results <- read.pdb("all.pdbqt", multi=TRUE)
+write.pdb(results, file="results.pdb")
+```
