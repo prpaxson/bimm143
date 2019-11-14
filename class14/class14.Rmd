@@ -113,3 +113,8 @@ plot( res01$log2FoldChange,  -log(res01$padj), col=mycols, ylab="-Log(P-value)",
 abline(v=c(-2,2), col="gray", lty=2)
 abline(h=-log(0.1), col="gray", lty=2)
 ```
+
+```{r}
+ord <- order( res01$padj )
+write.csv(res01[ord,], "signif01_results.csv")
+```
