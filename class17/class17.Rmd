@@ -1,0 +1,93 @@
+---
+title: "Class 17"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Metagenomics Co-occurrence networks
+
+Here we will analyze Tara Ocean bacterial data.
+
+We will use the **igraph** package from CRAN and the **RCy3** package from BioConductor to build and visualize networks of this data.
+
+```{r}
+library(RCy3)
+library(igraph)
+library(RColorBrewer)
+
+# Test the connection to Cytoscape.
+cytoscapePing()
+```
+
+```{r}
+# Check the version
+cytoscapeVersionInfo()
+```
+
+```{r}
+g <- makeSimpleIgraph()
+createNetworkFromIgraph(g,"myGraph")
+```
+
+Tell cytoscope to export an image
+```{r}
+fig <- exportImage(filename="demo", type="png", height=350)
+```
+
+Insert this image into this Rmd report
+```{r}
+knitr::include_graphics("./demo.png")
+```
+
+```{r}
+setVisualStyle("Marquee")
+```
+
+```{r}
+fig <- exportImage(filename="demo_marquee", type="png", height=350)
+```
+
+```{r}
+knitr::include_graphics("./demo_marquee.png")
+```
+
+## Read our metagenomics data set
+
+Reading in the data
+
+```{r}
+## scripts for processing located in "inst/data-raw/"
+prok_vir_cor <- read.delim("./virus_prok_cor_abundant.tsv", stringsAsFactors = FALSE)
+
+## Have a peek at the first 6 rows
+head(prok_vir_cor)
+```
+
+Creating an undirected network from this ageceny data.frame
+
+```{r}
+g <- graph.data.frame(prok_vir_cor, directed = FALSE)
+plot(g, vertex.size=3, vertex.label=NA)
+```
+
+```{r}
+V(g)
+```
+
+```{r}
+E(g)
+```
+
+```{r}
+cb <- cluster_edge_betweenness(g)
+cb
+```
+
+```{r}
+plot(cb, y=g, vertex.label=NA,  vertex.size=3)
+```
+
+
