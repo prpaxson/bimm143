@@ -1,0 +1,42 @@
+---
+title: "Designing a personalized cancer vaccine"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Step 1
+Identifying sequence regions that contain all 9-mer peptides that are only found in the tumor
+
+First, we need to read in the sequences
+```{r}
+library(bio3d)
+seqs <- read.fasta("lecture18_sequences.fa")
+seqs
+```
+
+Now, we need to get all the mutation sites:
+```{r}
+mutations = c()
+for (i in 1:(length(seqs$ali)/2))
+{
+  if ((seqs$ali["P53_wt",i] != seqs$ali["P53_mutant",i]) && (seqs$ali["P53_mutant",i] != "-"))
+  {
+    mutations <- c(mutations, i)
+  }
+}
+```
+
+Which are:
+```{r}
+mutations
+```
+
+But in order to get the 9-mers, we need to take ranges of -8 to +8 centered around these mutation sites:
+```{r}
+
+for (i in mutations):
+  
+```
