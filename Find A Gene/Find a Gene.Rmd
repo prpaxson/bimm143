@@ -1,0 +1,30 @@
+---
+title: "Find A Gene"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Question 7
+```{r}
+library(bio3d)
+library(RColorBrewer)
+```
+
+```{r}
+memes <- read.fasta("muscle.fst")
+memes2 <- seqidentity(memes)
+
+heatmap(memes2, margins=c(15,15), scale="column", col= colorRampPalette(brewer.pal(8, "Blues"))(25))
+
+```
+
+
+## Question 8
+```{r}
+memes3 <- read.fasta("memes.fst")
+memes4 <- blast.pdb(memes3)
+memes5 <- pdb.annotate(memes4)
+```
