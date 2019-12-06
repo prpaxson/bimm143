@@ -1,8 +1,8 @@
 ---
-title: 'Class 9: Unsupervised Learningg Mini-Project'
+title: 'Class 9: Unsupervised Learning Mini-Project'
 author: "Patrick Paxson"
 date: "10/29/2019"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}

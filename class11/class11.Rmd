@@ -39,11 +39,13 @@ round(sum(data$Proteins)/sum(data$Total) * 100, 2)
 
 > Q3:  Water molecules normally have 3 atoms. Why do we see just one atom per water molecule in this structure?
 
-We see only one atom per water molecule in the structure because the 
+We see only one atom per water molecule in the structure.
 
 > Q4:  There is a conserved water molecule in the binding site. Can you identify this water molecule? What residue number does this water molecule have?
 
 > Optional: Generate and save a figure clearly showing the two distinct chains of HIV-protease along with the ligand. You might also consider showing the catalytic residues ASP 25 in each chain (we recommend Licorice for these side-chains).
+
+![The HIV-protease with ligand.](1hsg.png)
 
 ## HIV-Pr structure analysis with Bio3D
 

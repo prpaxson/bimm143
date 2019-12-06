@@ -164,7 +164,7 @@ keggresids
 pathview(gene.data=foldchanges, pathway.id=keggresids, species="hsa")
 ```
 
-![cell_cycle]("hsa04142.pathview.png")
+![cell_cycle](hsa04142.pathview.png)
 
 ## Gene Ontology (GO)
 
